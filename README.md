@@ -82,7 +82,7 @@ Example installation from the command line:
   -d YOUR_DATABASE \
   -i odoo_whiteboard \
   --stop-after-init
-````
+```
 
 On Windows PowerShell:
 
@@ -131,19 +131,19 @@ python .\odoo-bin `
 
 The frontend was also manually regression-tested on Odoo 19, including:
 
-* Board creation, loading, renaming, switching, and deletion
-* Drawing and object tools
-* Templates and connectors
-* Undo and redo
-* Manual save and autosave
-* Revision-conflict handling
-* Failed-load recovery
-* Unsaved-change navigation protection
-* Thumbnail generation
-* PNG export
-* Responsive layouts
-* RTL layout
-* Browser-console error checks
+- Board creation, loading, renaming, switching, and deletion
+- Drawing and object tools
+- Templates and connectors
+- Undo and redo
+- Manual save and autosave
+- Revision-conflict handling
+- Failed-load recovery
+- Unsaved-change navigation protection
+- Thumbnail generation
+- PNG export
+- Responsive layouts
+- RTL layout
+- Browser-console error checks
 
 ## Repository structure
 
@@ -171,9 +171,9 @@ This module includes Fabric.js 5.3.0 under the MIT license.
 
 See:
 
-* `THIRD_PARTY_NOTICES.md`
-* `odoo_whiteboard/THIRD_PARTY_NOTICES.md`
-* `odoo_whiteboard/static/src/lib/FABRIC_LICENSE.txt`
+- `THIRD_PARTY_NOTICES.md`
+- `odoo_whiteboard/THIRD_PARTY_NOTICES.md`
+- `odoo_whiteboard/static/src/lib/FABRIC_LICENSE.txt`
 
 ## License
 
