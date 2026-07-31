@@ -1,4 +1,5 @@
 from odoo.exceptions import AccessError, ValidationError
+from odoo.fields import Command
 from odoo.tests.common import TransactionCase
 
 
@@ -17,8 +18,8 @@ class TestWhiteboardAccessControl(TransactionCase):
             "login": "whiteboard_phase_1c_user_a",
             "email": "whiteboard-phase-1c-a@example.invalid",
             "company_id": company.id,
-            "company_ids": [(6, 0, [company.id])],
-            "groups_id": [(6, 0, [internal_user_group.id])],
+            "company_ids": [Command.set([company.id])],
+            "group_ids": [Command.set([internal_user_group.id])],
         })
 
         self.user_b = self.env["res.users"].with_context(
@@ -28,8 +29,8 @@ class TestWhiteboardAccessControl(TransactionCase):
             "login": "whiteboard_phase_1c_user_b",
             "email": "whiteboard-phase-1c-b@example.invalid",
             "company_id": company.id,
-            "company_ids": [(6, 0, [company.id])],
-            "groups_id": [(6, 0, [internal_user_group.id])],
+            "company_ids": [Command.set([company.id])],
+            "group_ids": [Command.set([internal_user_group.id])],
         })
 
         self.Board = self.env["whiteboard.board"]

@@ -3,7 +3,7 @@
 import { Component, onMounted, onWillStart, onWillUnmount, useRef, useState } from "@odoo/owl";
 import { registry } from "@web/core/registry";
 import { useService } from "@web/core/utils/hooks";
-import { useSetupAction } from "@web/webclient/actions/action_hook";
+import { useSetupAction } from "@web/search/action_hook";
 
 import {
     WHITEBOARD_OBJECT_PROPS,
