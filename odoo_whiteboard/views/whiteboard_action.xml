@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_whiteboard_client" model="ir.actions.client">
+        <field name="name">Whiteboard</field>
+        <field name="tag">odoo_whiteboard.whiteboard_action</field>
+    </record>
+
+    <menuitem id="menu_whiteboard_root" name="Whiteboard" sequence="10"/>
+    <menuitem id="menu_whiteboard_open" name="Open Whiteboard" parent="menu_whiteboard_root"
+              action="action_whiteboard_client" sequence="10"/>
+    <menuitem id="menu_whiteboard_saved"
+              name="My Boards"
+              parent="menu_whiteboard_root"
+              action="action_whiteboard_board"
+              sequence="20"/>
+</odoo>
+

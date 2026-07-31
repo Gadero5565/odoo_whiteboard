@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="odoo_whiteboard.WhiteboardAction" owl="1">
+        <div class="o_whiteboard_action">
+            <div t-attf-class="o_whiteboard_layout #{state.sidebarOpen ? 'is-sidebar-open' : 'is-sidebar-closed'}">
+
+                <!-- Sidebar toggle -->
+                <button type="button"
+                        t-attf-class="o_whiteboard_sidebar_handle #{state.sidebarOpen ? 'is-open' : ''}"
+                        t-on-click="toggleSidebar"
+                        t-att-title="state.sidebarOpen ? 'Hide tools' : 'Show tools'"
+                        t-att-aria-expanded="state.sidebarOpen ? 'true' : 'false'"
+                        aria-controls="whiteboard-tools-panel">
+                    <i t-attf-class="fa #{state.sidebarOpen ? 'fa-chevron-left' : 'fa-sliders'}"/>
+                    <span t-if="!state.sidebarOpen">Tools</span>
+                </button>
+
+                <!-- Mobile backdrop -->
+                <button t-if="state.sidebarOpen"
+                        type="button"
+                        class="o_whiteboard_sidebar_backdrop"
+                        t-on-click="closeSidebar"
+                        title="Close tools"
+                        aria-label="Close tools"/>
+
+                <!-- Left sidebar -->
+                <aside id="whiteboard-tools-panel"
+                       t-attf-class="o_whiteboard_sidebar #{state.sidebarOpen ? 'is-open' : ''}"
+                       aria-label="Whiteboard controls">
+                    <div class="o_whiteboard_sidebar_header">
+                        <div class="o_wb_brand">
+                            <span class="o_wb_brand_icon">
+                                <i class="fa fa-pencil-square-o"/>
+                            </span>
+                            <div class="o_wb_brand_texts">
+                                <span class="o_wb_brand_title">Whiteboard</span>
+                                <span class="o_wb_brand_subtitle">Interactive workspace</span>
+                            </div>
+                        </div>
+
+                        <span t-if="!state.loading"
+                              t-attf-class="o_whiteboard_save_status is-#{state.saveStatus}"
+                              role="status"
+                              aria-live="polite">
+                            <i t-if="state.saveStatus === 'saved'"
+                               class="fa fa-check-circle"/>
+
+                            <i t-if="state.saveStatus === 'unsaved'"
+                               class="fa fa-circle-o"/>
+
+                            <i t-if="state.saveStatus === 'saving'"
+                               class="fa fa-spinner fa-spin"/>
+
+                            <i t-if="state.saveStatus === 'error'"
+                               class="fa fa-exclamation-circle"/>
+
+                            <span>
+                                <t t-esc="state.saveStatusText"/>
+                            </span>
+                        </span>
+
+                        <button type="button"
+                                class="o_wb_sidebar_close"
+                                t-on-click="closeSidebar"
+                                title="Hide tools"
+                                aria-label="Hide tools">
+                            <i class="fa fa-times"/>
+                        </button>
+                    </div>
+
+                    <div class="o_whiteboard_sidebar_scroll">
+
+                        <!-- Board -->
+                        <section class="o_wb_panel_section">
+                            <div class="o_wb_section_header">
+                                <span class="o_wb_section_title">Board</span>
+                            </div>
+
+                            <div class="o_wb_panel_stack">
+                                <button type="button"
+                                        class="o_wb_button o_wb_button_primary o_wb_button_full"
+                                        t-on-click="createBoard"
+                                        t-att-disabled="state.loading or state.saving"
+                                        t-att-title="'New board'">
+                                    <i class="fa fa-plus"/>
+                                    <span>New board</span>
+                                </button>
+
+                                <div class="o_wb_input_group">
+                                    <label class="o_wb_input_label">
+                                        Select board
+                                    </label>
+
+                                    <div class="o_wb_input_wrap">
+                                        <i class="fa fa-folder-open-o o_wb_input_icon"/>
+
+                                        <select class="o_wb_input o_wb_select"
+                                                t-on-change="onSelectBoard"
+                                                t-att-value="state.boardId || ''"
+                                                t-att-disabled="state.loading or state.saving or state.boardsLoading">
+                                            <option value=""
+                                                    disabled="1"
+                                                    t-att-selected="!state.boardId">
+                                                Select board
+                                            </option>
+
+                                            <t t-foreach="state.boards"
+                                               t-as="board"
+                                               t-key="board.id">
+                                                <option t-att-value="board.id"
+                                                        t-att-selected="board.id === state.boardId">
+                                                    <t t-esc="board.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+
+                                    <button t-if="state.boardsHasMore"
+                                            type="button"
+                                            class="o_wb_button o_wb_button_tool o_wb_button_full"
+                                            t-on-click="loadMoreBoards"
+                                            t-att-disabled="state.boardsLoading or state.loading or state.saving"
+                                            title="Load more whiteboards">
+                                        <i t-attf-class="fa #{state.boardsLoading ? 'fa-spinner fa-spin' : 'fa-chevron-down'}"/>
+
+                                        <t t-if="state.boardsLoading">
+                                            Loading…
+                                        </t>
+
+                                        <t t-else="">
+                                            Load more boards
+                                        </t>
+                                    </button>
+                                </div>
+
+                                <div class="o_wb_input_group">
+                                    <label class="o_wb_input_label">Board name</label>
+                                    <div class="o_wb_input_wrap">
+                                        <i class="fa fa-tag o_wb_input_icon"/>
+                                        <input class="o_wb_input"
+                                               placeholder="Board name"
+                                               maxlength="120"
+                                               t-att-value="state.boardName"
+                                               t-on-input="onBoardNameInput"
+                                               t-att-disabled="state.loading or state.saving"/>
+                                    </div>
+                                </div>
+
+                                <div t-if="state.canvasLimitWarning"
+                                     t-attf-class="o_wb_canvas_limit #{state.canvasLimitExceeded ? 'is-exceeded' : ''}">
+                                    <div class="o_wb_canvas_limit_header">
+                                        <i t-attf-class="fa #{state.canvasLimitExceeded ? 'fa-exclamation-triangle' : 'fa-tachometer'}"/>
+
+                                        <span>
+                                            <t t-if="state.canvasLimitExceeded">
+                                                Canvas limit exceeded
+                                            </t>
+
+                                            <t t-else="">
+                                                Canvas nearing limit
+                                            </t>
+                                        </span>
+                                    </div>
+
+                                    <div class="o_wb_canvas_limit_usage">
+                                        <t t-esc="state.canvasUsageText"/>
+                                    </div>
+
+                                    <div class="o_wb_canvas_limit_help">
+                                        Remove objects or simplify long freehand drawings to improve performance.
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Templates -->
+                        <section class="o_wb_panel_section">
+                            <div class="o_wb_section_header">
+                                <span class="o_wb_section_title">Templates</span>
+                            </div>
+
+                            <div class="o_wb_button_grid o_wb_button_grid_two">
+                                <button type="button"
+                                        class="o_wb_button o_wb_button_tool"
+                                        t-on-click="insertMindMapTemplate"
+                                        t-att-title="'Insert simple mind map template'">
+                                    <i class="fa fa-sitemap"/>
+                                    <span>Mind Map</span>
+                                </button>
+
+                                <button type="button"
+                                        class="o_wb_button o_wb_button_tool"
+                                        t-on-click="insertProjectPlanTemplate"
+                                        t-att-title="'Insert project plan template'">
+                                    <i class="fa fa-tasks"/>
+                                    <span>Project</span>
+                                </button>
+
+                                <button type="button"
+                                        class="o_wb_button o_wb_button_tool"
+                                        t-on-click="insertBasicFlowchartTemplate"
+                                        t-att-title="'Insert basic flowchart template'">
+                                    <i class="fa fa-share-alt"/>
+                                    <span>Flowchart</span>
+                                </button>
+
+                                <button type="button"
+                                        class="o_wb_button o_wb_button_tool"
+                                        t-on-click="insertProjectWorkflowTemplate"
+                                        t-att-title="'Insert project workflow template'">
+                                    <i class="fa fa-random"/>
+                                    <span>Workflow</span>
+                                </button>
+                            </div>
+                        </section>
+
+                        <!-- Tools -->
+                        <section class="o_wb_panel_section">
+                            <div class="o_wb_section_header">
+                                <span class="o_wb_section_title">Tools</span>
+                            </div>
+
+                            <div class="o_wb_button_grid o_wb_button_grid_two">
+                                <button type="button"
+                                        t-attf-class="o_wb_button o_wb_button_tool #{state.mode === 'select' ? 'is-active' : ''}"
+                                        t-on-click="setSelect"
+                                        t-att-title="'Select / move objects'"
+                                        t-att-aria-pressed="state.mode === 'select' ? 'true' : 'false'">
+                                    <i class="fa fa-mouse-pointer"/>
+                                    <span>Select</span>
+                                </button>
+
+                                <button type="button"
+                                        t-attf-class="o_wb_button o_wb_button_tool #{state.mode === 'pen' ? 'is-active' : ''}"
+                                        t-on-click="setPen"
+                                        t-att-title="'Pen'"
+                                        t-att-aria-pressed="state.mode === 'pen' ? 'true' : 'false'">
+                                    <i class="fa fa-pencil"/>
+                                    <span>Pen</span>
+                                </button>
+
+                                <button type="button"
+                                        t-attf-class="o_wb_button o_wb_button_tool #{state.mode === 'eraser' ? 'is-active' : ''}"
+                                        t-on-click="setEraser"
+                                        t-att-title="'Erase whole objects and paths'"
+                                        t-att-aria-pressed="state.mode === 'eraser' ? 'true' : 'false'">
+                                    <i class="fa fa-eraser"/>
+                                    <span>Eraser</span>
+                                </button>
+
+                                <button type="button"
+                                        t-attf-class="o_wb_button o_wb_button_tool #{state.mode === 'text' ? 'is-active' : ''}"
+                                        t-on-click="addText"
+                                        t-att-title="'Add text'"
+                                        t-att-aria-pressed="state.mode === 'text' ? 'true' : 'false'">
+                                    <i class="fa fa-font"/>
+                                    <span>Text</span>
+                                </button>
+                            </div>
+                            <div t-if="state.mode === 'eraser'"
+                                 class="o_wb_hint">
+                                Click or drag across objects and paths to remove them.
+                                One drag can be undone as one action.
+                            </div>
+                        </section>
+
+                        <!-- Shapes -->
+                        <section class="o_wb_panel_section">
+                            <div class="o_wb_section_header">
+                                <span class="o_wb_section_title">Shapes</span>
+                            </div>
+
+                            <div class="o_wb_button_grid o_wb_button_grid_icons">
+                                <button type="button"
+                                        class="o_wb_icon_button"
+                                        t-on-click="addRectangle"
+                                        t-att-title="'Add rectangle'"
+                                        aria-label="Add rectangle">
+                                    <i class="fa fa-square-o"/>
+                                </button>
+
+                                <button type="button"
+                                        class="o_wb_icon_button"
+                                        t-on-click="addCircle"
+                                        t-att-title="'Add circle'"
+                                        aria-label="Add circle">
+                                    <i class="fa fa-circle-o"/>
+                                </button>
+
+                                <button type="button"
+                                        class="o_wb_icon_button"
+                                        t-on-click="addDiamond"
+                                        t-att-title="'Add diamond'"
+                                        aria-label="Add diamond">
+                                    <i class="fa fa-diamond"/>
+                                </button>
+
+                                <button type="button"
+                                        class="o_wb_icon_button"
+                                        t-on-click="addLine"
+                                        t-att-title="'Add line'"
+                                        aria-label="Add line">
+                                    <i class="fa fa-minus"/>
+                                </button>
+
+                                <button type="button"
+                                        class="o_wb_icon_button"
+                                        t-on-click="addArrow"
+                                        t-att-title="'Add arrow'"
+                                        aria-label="Add arrow">
+                                    <i class="fa fa-long-arrow-right"/>
+                                </button>
+                            </div>
+                        </section>
+
+                        <!-- Connectors -->
+                        <section class="o_wb_panel_section">
+                            <div class="o_wb_section_header">
+                                <span class="o_wb_section_title">Connect</span>
+                            </div>
+
+                            <div class="o_wb_panel_stack">
+                                <button type="button"
+                                        t-attf-class="o_wb_button o_wb_button_tool o_wb_button_full #{state.mode === 'connector' ? 'is-active' : ''}"
+                                        t-on-click="setConnectorMode"
+                                        t-att-aria-pressed="state.mode === 'connector' ? 'true' : 'false'"
+                                        t-att-title="'Connect two objects'">
+                                    <i class="fa fa-link"/>
+                                    <span>Connector</span>
+                                </button>
+
+                                <div t-if="state.mode === 'connector'" class="o_wb_hint">
+                                    <t t-if="state.connectorFromNodeId">
+                                        Source selected. Click a target object.
+                                    </t>
+                                    <t t-else="">
+                                        Click a source object, then a target object.
+                                    </t>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Flowchart -->
+                        <section class="o_wb_panel_section">
+                            <div class="o_wb_section_header">
+                                <span class="o_wb_section_title">Flowchart</span>
+                            </div>
+
+                            <div class="o_wb_button_grid o_wb_button_grid_two">
+                                <button type="button"
+                                        class="o_wb_button o_wb_button_tool"
+                                        t-on-click="addFlowTerminator"
+                                        t-att-title="'Add start / end node'">
+                                    <i class="fa fa-circle-o"/>
+                                    <span>Start</span>
+                                </button>
+
+                                <button type="button"
+                                        class="o_wb_button o_wb_button_tool"
+                                        t-on-click="addFlowProcess"
+                                        t-att-title="'Add process node'">
+                                    <i class="fa fa-square-o"/>
+                                    <span>Process</span>
+                                </button>
+
+                                <button type="button"
+                                        class="o_wb_button o_wb_button_tool"
+                                        t-on-click="addFlowDecision"
+                                        t-att-title="'Add decision node'">
+                                    <i class="fa fa-diamond"/>
+                                    <span>Decision</span>
+                                </button>
+
+                                <button type="button"
+                                        class="o_wb_button o_wb_button_tool"
+                                        t-on-click="addFlowData"
+                                        t-att-title="'Add data node'">
+                                    <i class="fa fa-file-o"/>
+                                    <span>Data</span>
+                                </button>
+
+                                <button type="button"
+                                        class="o_wb_button o_wb_button_tool o_wb_button_full_span"
+                                        t-on-click="editSelectedNode"
+                                        t-att-title="'Edit selected node'">
+                                    <i class="fa fa-i-cursor"/>
+                                    <span>Edit node</span>
+                                </button>
+                            </div>
+                        </section>
+
+                        <!-- Mind map -->
+                        <section class="o_wb_panel_section">
+                            <div class="o_wb_section_header">
+                                <span class="o_wb_section_title">Mind Map</span>
+                            </div>
+
+                            <div class="o_wb_button_grid o_wb_button_grid_two">
+                                <button type="button"
+                                        class="o_wb_button o_wb_button_tool"
+                                        t-on-click="addMindNode"
+                                        t-att-title="'Add mind-map node'">
+                                    <i class="fa fa-sitemap"/>
+                                    <span>Node</span>
+                                </button>
+
+                                <button type="button"
+                                        class="o_wb_button o_wb_button_tool"
+                                        t-on-click="addMindChild"
+                                        t-att-title="'Add child node to selected mind-map node'">
+                                    <i class="fa fa-plus-square-o"/>
+                                    <span>Child</span>
+                                </button>
+
+                                <button type="button"
+                                        class="o_wb_button o_wb_button_tool o_wb_button_full_span"
+                                        t-on-click="editSelectedNode"
+                                        t-att-title="'Edit selected mind-map node'">
+                                    <i class="fa fa-i-cursor"/>
+                                    <span>Edit node</span>
+                                </button>
+                            </div>
+                        </section>
+
+                        <!-- Actions -->
+                        <section class="o_wb_panel_section">
+                            <div class="o_wb_section_header">
+                                <span class="o_wb_section_title">Actions</span>
+                            </div>
+
+                            <div class="o_wb_button_grid o_wb_button_grid_two">
+                                <button type="button"
+                                        class="o_wb_button o_wb_button_tool"
+                                        t-on-click="undo"
+                                        t-att-disabled="state.loading or !state.canUndo"
+                                        t-att-title="state.canUndo ? 'Undo' : 'Nothing to undo'"
+                                        aria-keyshortcuts="Control+Z Meta+Z">
+                                    <i class="fa fa-undo"/>
+                                    <span>Undo</span>
+                                </button>
+
+                                <button type="button"
+                                        class="o_wb_button o_wb_button_tool"
+                                        t-on-click="redo"
+                                        t-att-disabled="state.loading or !state.canRedo"
+                                        t-att-title="state.canRedo ? 'Redo' : 'Nothing to redo'"
+                                        aria-keyshortcuts="Control+Shift+Z Meta+Shift+Z Control+Y Meta+Y">
+                                    <i class="fa fa-repeat"/>
+                                    <span>Redo</span>
+                                </button>
+
+                                <button type="button"
+                                        class="o_wb_button o_wb_button_tool o_wb_button_danger"
+                                        t-on-click="deleteSelectedObjects"
+                                        t-att-title="'Remove selected object'"
+                                        aria-keyshortcuts="Delete Backspace">
+                                    <i class="fa fa-trash-o"/>
+                                    <span>Remove</span>
+                                </button>
+
+                                <button type="button"
+                                        class="o_wb_button o_wb_button_tool o_wb_button_danger"
+                                        t-on-click="clearCanvas"
+                                        t-att-title="'Clear board'">
+                                    <i class="fa fa-trash"/>
+                                    <span>Clear all</span>
+                                </button>
+
+                                <button type="button"
+                                        class="o_wb_button o_wb_button_primary"
+                                        t-on-click="save"
+                                        t-att-disabled="state.loading or state.saving or !state.dirty"
+                                        t-att-title="state.dirty ? 'Save changes' : 'All changes saved'"
+                                        aria-keyshortcuts="Control+S Meta+S">
+                                    <i t-if="state.saving"
+                                       class="fa fa-spinner fa-spin"/>
+
+                                    <i t-elif="!state.dirty"
+                                       class="fa fa-check"/>
+
+                                    <i t-else=""
+                                       class="fa fa-cloud-upload"/>
+
+                                    <span t-if="state.saving">
+                                        Saving…
+                                    </span>
+
+                                    <span t-elif="!state.dirty">
+                                        Saved
+                                    </span>
+
+                                    <span t-else="">
+                                        Save
+                                    </span>
+                                </button>
+
+                                <button type="button"
+                                        class="o_wb_button o_wb_button_tool"
+                                        t-on-click="exportPNG"
+                                        t-att-title="'Export PNG'">
+                                    <i class="fa fa-download"/>
+                                    <span>Export</span>
+                                </button>
+                            </div>
+                            <div class="o_wb_shortcuts"
+                                 aria-label="Keyboard shortcuts">
+                                <div class="o_wb_shortcut_row">
+                                    <span>Save</span>
+                                    <kbd>Ctrl/⌘ S</kbd>
+                                </div>
+
+                                <div class="o_wb_shortcut_row">
+                                    <span>Undo</span>
+                                    <kbd>Ctrl/⌘ Z</kbd>
+                                </div>
+
+                                <div class="o_wb_shortcut_row">
+                                    <span>Redo</span>
+                                    <kbd>Ctrl/⌘ ⇧ Z</kbd>
+                                </div>
+
+                                <div class="o_wb_shortcut_row">
+                                    <span>Remove</span>
+                                    <kbd>Delete</kbd>
+                                </div>
+
+                                <div class="o_wb_shortcut_row">
+                                    <span>Cancel mode</span>
+                                    <kbd>Esc</kbd>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Style -->
+                        <section class="o_wb_panel_section">
+                            <div class="o_wb_section_header">
+                                <span class="o_wb_section_title">Style</span>
+                            </div>
+
+                            <div class="o_wb_panel_stack">
+                                <label class="o_wb_input_group">
+                                    <span class="o_wb_input_label">Color</span>
+                                    <div class="o_wb_style_inline">
+                                        <input type="color"
+                                               class="o_wb_color_input"
+                                               t-att-value="state.color"
+                                               t-on-input="setColor"
+                                               aria-label="Brush color"/>
+                                        <span class="o_wb_style_value">
+                                            <t t-esc="state.color"/>
+                                        </span>
+                                    </div>
+                                </label>
+
+                                <label class="o_wb_input_group">
+                                    <span class="o_wb_input_label">Width</span>
+                                    <div class="o_wb_style_inline">
+                                        <input type="range"
+                                               class="o_wb_range_input"
+                                               min="1"
+                                               max="40"
+                                               t-att-value="state.width"
+                                               t-on-input="setWidth"
+                                               aria-label="Brush width"/>
+                                        <span class="o_wb_style_value">
+                                            <t t-esc="state.width"/>
+                                        </span>
+                                    </div>
+                                </label>
+                            </div>
+                        </section>
+
+                    </div>
+                </aside>
+
+                <!-- Canvas side -->
+                <div class="o_whiteboard_main">
+                    <div class="o_whiteboard_canvas_area">
+                        <t t-if="state.loading">
+                            <div class="o_whiteboard_loading">
+                                <span class="fa fa-spinner fa-spin me-2"/>
+
+                                <t t-esc="state.loadingMessage"/>
+                            </div>
+                        </t>
+
+                        <div t-if="state.fatalError"
+                             class="o_whiteboard_fatal_error"
+                             role="alert">
+                            <span class="o_whiteboard_fatal_icon">
+                                <i class="fa fa-exclamation-triangle"/>
+                            </span>
+
+                            <strong>Whiteboard unavailable</strong>
+
+                            <span>
+                                <t t-esc="state.fatalError"/>
+                            </span>
+
+                            <button type="button"
+                                    class="o_wb_button o_wb_button_primary"
+                                    t-on-click="reloadPage">
+                                <i class="fa fa-refresh"/>
+                                <span>Reload page</span>
+                            </button>
+                        </div>
+
+
+                        <t t-if="!state.loading and !state.fatalError">
+                            <div t-if="state.canvasObjectCount === 0"
+                                 class="o_whiteboard_empty_state"
+                                 role="status">
+                                <span class="o_whiteboard_empty_icon">
+                                    <i class="fa fa-pencil-square-o"/>
+                                </span>
+
+                                <strong>Empty whiteboard</strong>
+
+                                <span>
+                                    Open Tools to draw, add a shape, or insert a template.
+                                </span>
+                            </div>
+                        </t>
+
+                        <div class="o_whiteboard_stage"
+                                     t-ref="wrap"
+                                     role="region"
+                                     tabindex="0"
+                                     aria-label="Interactive whiteboard canvas"
+                                     aria-keyshortcuts="Escape Delete Backspace">
+                            <canvas t-ref="canvas" class="o_whiteboard_canvas"/>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </t>
+</templates>
+

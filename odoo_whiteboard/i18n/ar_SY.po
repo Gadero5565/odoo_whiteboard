@@ -1,0 +1,1051 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* odoo_whiteboard
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-24 08:23+0000\n"
+"PO-Revision-Date: 2026-07-24 08:23+0000\n"
+"Last-Translator: Kheder Kheder\n"
+"Language-Team: Arabic (Syria)\n"
+"Language: ar_SY\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "A whiteboard text object is invalid or too long."
+msgstr "عنصر النص في السبورة غير صالح أو طويل جدًا."
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Actions"
+msgstr "الإجراءات"
+
+#. module: odoo_whiteboard
+#: model:ir.model.fields,field_description:odoo_whiteboard.field_whiteboard_board__active
+msgid "Active"
+msgstr "نشط"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Add arrow"
+msgstr "إضافة سهم"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Add circle"
+msgstr "إضافة دائرة"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Add diamond"
+msgstr "إضافة شكل مُعيَّن"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Add line"
+msgstr "إضافة خط"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Add rectangle"
+msgstr "إضافة مستطيل"
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Animated thumbnails are not supported."
+msgstr "الصور المصغرة المتحركة غير مدعومة."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Archived whiteboards cannot be modified."
+msgstr "لا يمكن تعديل اللوحات البيضاء المؤرشفة."
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Board"
+msgstr "اللوحة"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Board name"
+msgstr "اسم اللوحة"
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#: code:addons/odoo_whiteboard/models/models.py:0
+#: code:addons/odoo_whiteboard/models/models.py:0
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Board not found or access denied."
+msgstr "لم يتم العثور على اللوحة أو تم رفض الوصول إليها."
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Brush color"
+msgstr "لون الفرشاة"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Brush width"
+msgstr "عرض الفرشاة"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Cancel mode"
+msgstr "إلغاء الوضع الحالي"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Canvas limit exceeded"
+msgstr "تم تجاوز حد مساحة الرسم"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Canvas nearing limit"
+msgstr "مساحة الرسم تقترب من الحد"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Child"
+msgstr "عنصر فرعي"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Clear all"
+msgstr "مسح الكل"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Click a source object, then a target object."
+msgstr "انقر على العنصر المصدر، ثم على العنصر الهدف."
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid ""
+"Click or drag across objects and paths to remove them.\n"
+"                                One drag can be undone as one action."
+msgstr "انقر على العناصر والمسارات أو اسحب فوقها لإزالتها.\n                                يمكن التراجع عن السحب الواحد كإجراء واحد."
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Close tools"
+msgstr "إغلاق الأدوات"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Color"
+msgstr "اللون"
+
+#. module: odoo_whiteboard
+#: model:ir.model.fields,field_description:odoo_whiteboard.field_whiteboard_board__company_id
+msgid "Company"
+msgstr "الشركة"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Connect"
+msgstr "ربط"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Connector"
+msgstr "رابط"
+
+#. module: odoo_whiteboard
+#: model:ir.model.fields,field_description:odoo_whiteboard.field_whiteboard_board__create_uid
+msgid "Created by"
+msgstr "أنشأه"
+
+#. module: odoo_whiteboard
+#: model:ir.model.fields,field_description:odoo_whiteboard.field_whiteboard_board__create_date
+msgid "Created on"
+msgstr "تاريخ الإنشاء"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Ctrl/⌘ S"
+msgstr "Ctrl/⌘ S"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Ctrl/⌘ Z"
+msgstr "Ctrl/⌘ Z"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Ctrl/⌘ ⇧ Z"
+msgstr "Ctrl/⌘ ⇧ Z"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Data"
+msgstr "البيانات"
+
+#. module: odoo_whiteboard
+#: model:ir.model.fields,field_description:odoo_whiteboard.field_whiteboard_board__data_json
+msgid "Data Json"
+msgstr "بيانات JSON"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Decision"
+msgstr "قرار"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Delete"
+msgstr "حذف"
+
+#. module: odoo_whiteboard
+#: model:ir.model.fields,field_description:odoo_whiteboard.field_whiteboard_board__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Each whiteboard object must be a JSON object."
+msgstr "يجب أن يكون كل عنصر في السبورة كائن JSON."
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Edit node"
+msgstr "تحرير العقدة"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Empty whiteboard"
+msgstr "السبورة فارغة"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Eraser"
+msgstr "الممحاة"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Esc"
+msgstr "Esc"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Export"
+msgstr "تصدير"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Flowchart"
+msgstr "مخطط انسيابي"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Hide tools"
+msgstr "إخفاء الأدوات"
+
+#. module: odoo_whiteboard
+#: model:ir.model.fields,field_description:odoo_whiteboard.field_whiteboard_board__id
+msgid "ID"
+msgstr "المعرّف"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Interactive whiteboard canvas"
+msgstr "مساحة رسم تفاعلية للوحة البيضاء"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Interactive workspace"
+msgstr "مساحة عمل تفاعلية"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Keyboard shortcuts"
+msgstr "اختصارات لوحة المفاتيح"
+
+#. module: odoo_whiteboard
+#: model:ir.model.fields,field_description:odoo_whiteboard.field_whiteboard_board____last_update
+msgid "Last Modified on"
+msgstr "تاريخ آخر تعديل"
+
+#. module: odoo_whiteboard
+#: model:ir.model.fields,field_description:odoo_whiteboard.field_whiteboard_board__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: odoo_whiteboard
+#: model:ir.model.fields,field_description:odoo_whiteboard.field_whiteboard_board__write_date
+msgid "Last Updated on"
+msgstr "تاريخ آخر تحديث"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Load more boards"
+msgstr "تحميل المزيد من اللوحات"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Load more whiteboards"
+msgstr "تحميل المزيد من اللوحات البيضاء"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Loading…"
+msgstr "جارٍ التحميل…"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Mind Map"
+msgstr "خريطة ذهنية"
+
+#. module: odoo_whiteboard
+#: model:ir.actions.act_window,name:odoo_whiteboard.action_whiteboard_board
+#: model:ir.ui.menu,name:odoo_whiteboard.menu_whiteboard_saved
+msgid "My Boards"
+msgstr "لوحاتي"
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "My Whiteboard"
+msgstr "لوحتي البيضاء"
+
+#. module: odoo_whiteboard
+#: model:ir.model.fields,field_description:odoo_whiteboard.field_whiteboard_board__name
+msgid "Name"
+msgstr "الاسم"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "New board"
+msgstr "لوحة جديدة"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Node"
+msgstr "عقدة"
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Only whiteboard groups may contain child objects."
+msgstr "يُسمح فقط لمجموعات السبورة باحتواء عناصر فرعية."
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Open Tools to draw, add a shape, or insert a template."
+msgstr "افتح الأدوات للرسم أو إضافة شكل أو إدراج قالب."
+
+#. module: odoo_whiteboard
+#: model:ir.ui.menu,name:odoo_whiteboard.menu_whiteboard_open
+#: model_terms:ir.ui.view,arch_db:odoo_whiteboard.view_whiteboard_board_form
+msgid "Open Whiteboard"
+msgstr "فتح السبورة"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Pen"
+msgstr "القلم"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Process"
+msgstr "عملية"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Project"
+msgstr "مشروع"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Redo"
+msgstr "إعادة"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Reload page"
+msgstr "إعادة تحميل الصفحة"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Remove"
+msgstr "إزالة"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid ""
+"Remove objects or simplify long freehand drawings to improve performance."
+msgstr "أزل بعض العناصر أو بسّط الرسومات الحرة الطويلة لتحسين الأداء."
+
+#. module: odoo_whiteboard
+#: model:ir.model.fields,field_description:odoo_whiteboard.field_whiteboard_board__revision
+msgid "Revision"
+msgstr "رقم المراجعة"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Save"
+msgstr "حفظ"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Saved"
+msgstr "تم الحفظ"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Saving…"
+msgstr "جارٍ الحفظ…"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Select"
+msgstr "تحديد"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Select board"
+msgstr "اختيار لوحة"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Shapes"
+msgstr "الأشكال"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Source selected. Click a target object."
+msgstr "تم تحديد العنصر المصدر. انقر على العنصر الهدف."
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Start"
+msgstr "بداية"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Style"
+msgstr "النمط"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Templates"
+msgstr "القوالب"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Text"
+msgstr "نص"
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid ""
+"This whiteboard was changed in another tab or session. Reload it before "
+"saving to avoid overwriting newer changes."
+msgstr "تم تعديل هذه السبورة في علامة تبويب أو جلسة أخرى. أعد تحميلها قبل الحفظ لتجنّب الكتابة فوق التغييرات الأحدث."
+
+#. module: odoo_whiteboard
+#: model:ir.model.fields,field_description:odoo_whiteboard.field_whiteboard_board__thumbnail
+msgid "Thumbnail"
+msgstr "الصورة المصغرة"
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Thumbnail base64 data is invalid."
+msgstr "بيانات Base64 للصورة المصغرة غير صالحة."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Thumbnail could not be normalized."
+msgstr "تعذّرت معالجة الصورة المصغرة إلى الصيغة القياسية."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Thumbnail could not be reduced to a safe size."
+msgstr "تعذّر تصغير الصورة المصغرة إلى حجم آمن."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#: code:addons/odoo_whiteboard/models/models.py:0
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Thumbnail data is invalid."
+msgstr "بيانات الصورة المصغرة غير صالحة."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Thumbnail dimensions are too large."
+msgstr "أبعاد الصورة المصغرة كبيرة جدًا."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Thumbnail image format is not supported."
+msgstr "تنسيق الصورة المصغرة غير مدعوم."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Thumbnail image type does not match its data URL."
+msgstr "نوع الصورة المصغرة لا يتطابق مع عنوان URL لبياناتها."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Thumbnail is not a valid image."
+msgstr "الصورة المصغرة ليست صورة صالحة."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Thumbnail is too large."
+msgstr "حجم الصورة المصغرة كبير جدًا."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Thumbnail must be a supported base64 image."
+msgstr "يجب أن تكون الصورة المصغرة صورة Base64 مدعومة."
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Tools"
+msgstr "الأدوات"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Undo"
+msgstr "تراجع"
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Unsupported whiteboard object type: %s"
+msgstr "نوع عنصر غير مدعوم في السبورة: %s"
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Untitled Board"
+msgstr "لوحة بلا عنوان"
+
+#. module: odoo_whiteboard
+#: model:ir.model.fields,field_description:odoo_whiteboard.field_whiteboard_board__user_id
+msgid "User"
+msgstr "المستخدم"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#: model:ir.actions.client,name:odoo_whiteboard.action_whiteboard_client
+#: model:ir.ui.menu,name:odoo_whiteboard.menu_whiteboard_root
+#, python-format
+msgid "Whiteboard"
+msgstr "السبورة"
+
+#. module: odoo_whiteboard
+#: model:ir.model,name:odoo_whiteboard.model_whiteboard_board
+msgid "Whiteboard Board"
+msgstr "السبورة"
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard Fabric version is invalid."
+msgstr "إصدار Fabric الخاص بالسبورة غير صالح."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard background must be a plain color."
+msgstr "يجب أن تكون خلفية السبورة لونًا ثابتًا."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard colors must be plain color values."
+msgstr "يجب أن تكون ألوان السبورة قيم ألوان ثابتة."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard connector metadata is invalid."
+msgstr "البيانات الوصفية لرابط السبورة غير صالحة."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard contains a string value that is too long."
+msgstr "تحتوي السبورة على قيمة نصية طويلة جدًا."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard contains an invalid number."
+msgstr "تحتوي السبورة على رقم غير صالح."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard contains an oversized collection."
+msgstr "تحتوي السبورة على مجموعة يتجاوز حجمها الحد المسموح."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard contains too many objects."
+msgstr "تحتوي السبورة على عدد كبير جدًا من العناصر."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard contains too much text."
+msgstr "تحتوي السبورة على كمية كبيرة جدًا من النص."
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Whiteboard controls"
+msgstr "عناصر التحكم بالسبورة"
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard data contains an unsafe property."
+msgstr "تحتوي بيانات السبورة على خاصية غير آمنة."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard data contains an unsupported value."
+msgstr "تحتوي بيانات السبورة على قيمة غير مدعومة."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard data contains unsupported canvas properties."
+msgstr "تحتوي بيانات السبورة على خصائص غير مدعومة لمساحة الرسم."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard data contains unsupported external content."
+msgstr "تحتوي بيانات السبورة على محتوى خارجي غير مدعوم."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard data is nested too deeply."
+msgstr "بيانات السبورة متداخلة على مستويات كثيرة جدًا."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard data is not valid JSON."
+msgstr "بيانات السبورة ليست بصيغة JSON صالحة."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard data must be a JSON object."
+msgstr "يجب أن تكون بيانات السبورة كائن JSON."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard data must be a JSON string."
+msgstr "يجب أن تكون بيانات السبورة سلسلة نصية بصيغة JSON."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard drawing paths are too complex."
+msgstr "مسارات الرسم في السبورة معقدة جدًا."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard font size is invalid."
+msgstr "حجم الخط في السبورة غير صالح."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard group objects are invalid."
+msgstr "عناصر مجموعة السبورة غير صالحة."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard groups are nested too deeply."
+msgstr "مجموعات السبورة متداخلة على مستويات كثيرة جدًا."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard is too large to save."
+msgstr "حجم السبورة كبير جدًا ولا يمكن حفظها."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard name cannot exceed %s characters."
+msgstr "لا يمكن أن يتجاوز اسم السبورة %s حرفًا."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard name is required."
+msgstr "اسم السبورة مطلوب."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard name must be text."
+msgstr "يجب أن يكون اسم السبورة نصًا."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard no longer exists."
+msgstr "لم تعد السبورة موجودة."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard object contains unsupported path data."
+msgstr "يحتوي عنصر السبورة على بيانات مسار غير مدعومة."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard object contains unsupported polygon data."
+msgstr "يحتوي عنصر السبورة على بيانات مضلع غير مدعومة."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#: code:addons/odoo_whiteboard/models/models.py:0
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard object metadata is invalid."
+msgstr "البيانات الوصفية لعنصر السبورة غير صالحة."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard object scale is invalid."
+msgstr "مقياس تحجيم عنصر السبورة غير صالح."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard object type does not match its metadata."
+msgstr "نوع عنصر السبورة لا يتطابق مع بياناته الوصفية."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard objects must be a JSON array."
+msgstr "يجب أن تكون عناصر السبورة مصفوفة JSON."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard opacity is invalid."
+msgstr "قيمة العتامة في السبورة غير صالحة."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard path data contains an invalid number."
+msgstr "تحتوي بيانات مسار السبورة على رقم غير صالح."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard path data is invalid or too complex."
+msgstr "بيانات مسار السبورة غير صالحة أو معقدة جدًا."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard path data is invalid."
+msgstr "بيانات مسار السبورة غير صالحة."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard polygon points are invalid."
+msgstr "نقاط مضلع السبورة غير صالحة."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard revision is missing or invalid."
+msgstr "رقم مراجعة السبورة مفقود أو غير صالح."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "Whiteboard stroke width is invalid."
+msgstr "عرض خط الرسم في السبورة غير صالح."
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Whiteboard unavailable"
+msgstr "السبورة غير متاحة"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Width"
+msgstr "العرض"
+
+#. module: odoo_whiteboard
+#. odoo-javascript
+#: code:addons/odoo_whiteboard/static/src/whiteboard_action/whiteboard_action.xml:0
+#, python-format
+msgid "Workflow"
+msgstr "سير العمل"
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid ""
+"You can create up to %s whiteboards. Delete an existing board before "
+"creating another."
+msgstr "يمكنك إنشاء ما يصل إلى %s سبورة. احذف لوحة موجودة قبل إنشاء لوحة أخرى."
+
+#. module: odoo_whiteboard
+#. odoo-python
+#: code:addons/odoo_whiteboard/models/models.py:0
+#, python-format
+msgid "missing"
+msgstr "مفقود"

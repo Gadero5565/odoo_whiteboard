@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="whiteboard_board_rule_user" model="ir.rule">
+        <field name="name">Whiteboard boards: own only</field>
+        <field name="model_id" ref="model_whiteboard_board"/>
+        <field name="domain_force">[('user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+</odoo>
+
