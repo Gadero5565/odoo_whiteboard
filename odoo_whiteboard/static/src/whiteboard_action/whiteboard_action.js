@@ -37,6 +37,8 @@ const CANVAS_WARNING_RATIO = 0.75;
 const LARGE_BOARD_OBJECT_THRESHOLD = 250;
 const LARGE_BOARD_JSON_BYTES = 384 * 1024;
 
+const CANVAS_BACKGROUND_COLOR = "#ffffff";
+
 export class WhiteboardAction extends Component {
     setup() {
         this.orm = useService("orm");
@@ -429,7 +431,7 @@ export class WhiteboardAction extends Component {
         const canvasEl = this.canvasRef.el;
 
         this.canvas = new fabric.Canvas(canvasEl, {
-            backgroundColor: "white",
+            backgroundColor: CANVAS_BACKGROUND_COLOR,
             preserveObjectStacking: true,
             selection: true,
             enablePointerEvents: true,
@@ -2449,6 +2451,13 @@ export class WhiteboardAction extends Component {
         }
 
         try {
+            /*
+             * JPEG has no transparency. Ensure transparent canvas pixels do not
+             * become black when the thumbnail is encoded.
+             */
+            this.canvas.backgroundColor = CANVAS_BACKGROUND_COLOR;
+            this.canvas.renderAll();
+
             const thumbnail = this.canvas.toDataURL({
                 format: "jpeg",
                 quality: THUMBNAIL_JPEG_QUALITY,
@@ -3101,7 +3110,7 @@ export class WhiteboardAction extends Component {
             this.canvas.remove(object);
         }
 
-        this.canvas.backgroundColor = "white";
+        this.canvas.backgroundColor = CANVAS_BACKGROUND_COLOR;
         this.canvas.requestRenderAll();
     }
 
@@ -3146,6 +3155,11 @@ export class WhiteboardAction extends Component {
                         this.canvas.loadFromJSON(
                             parsed,
                             () => {
+                                /*
+                                 * Older or incomplete board JSON may restore a transparent canvas.
+                                 * The whiteboard always uses an opaque white background.
+                                 */
+                                this.canvas.backgroundColor = CANVAS_BACKGROUND_COLOR;
                                 this.canvas.requestRenderAll();
                                 resolve();
                             }
