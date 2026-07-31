@@ -20,7 +20,7 @@ layouts, RTL support, and optimistic concurrency protection.
     "author": "Gadeer Mahmoud",
     "license": "LGPL-3",
     "images": [
-        "static/description/images/main_screenshot.png",
+        "static/description/images/cover.png",
     ],
     "depends": [
         "web",
