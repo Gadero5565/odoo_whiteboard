@@ -9,7 +9,7 @@ Fabric.js library for canvas rendering and object manipulation.
 
 | Odoo version | Branch | Status |
 |---|---|---|
-| Odoo 19 | `19.0` | Supported |
+| Odoo 18 | `18.0` | In development |
 
 This repository currently contains the Odoo 19 edition.
 
