@@ -19,7 +19,7 @@ class TestWhiteboardAccessControl(TransactionCase):
             "email": "whiteboard-phase-1c-a@example.invalid",
             "company_id": company.id,
             "company_ids": [Command.set([company.id])],
-            "group_ids": [Command.set([internal_user_group.id])],
+            "groups_id": [Command.set([internal_user_group.id])],
         })
 
         self.user_b = self.env["res.users"].with_context(
@@ -30,7 +30,7 @@ class TestWhiteboardAccessControl(TransactionCase):
             "email": "whiteboard-phase-1c-b@example.invalid",
             "company_id": company.id,
             "company_ids": [Command.set([company.id])],
-            "group_ids": [Command.set([internal_user_group.id])],
+            "groups_id": [Command.set([internal_user_group.id])],
         })
 
         self.Board = self.env["whiteboard.board"]

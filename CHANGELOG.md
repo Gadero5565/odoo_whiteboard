@@ -65,3 +65,15 @@ ODOO_MAJOR.MODULE_MAJOR.MODULE_MINOR.PATCH
 
 - Backend: 64 tests, 0 failures, 0 errors.
 - Frontend: full manual regression checklist completed on Odoo 19.
+
+## 18.0.1.0.0
+
+- Initial Odoo 18 release.
+- Backported from the verified Odoo 19 implementation.
+- Updated Odoo 18 compatibility for user group handling.
+- Verified clean installation on Odoo 18.
+- Full backend regression suite passed:
+  - 64 tests
+  - 0 failures
+  - 0 errors
+- Full manual frontend regression completed successfully.
