@@ -8,10 +8,10 @@ Fabric.js library for canvas rendering and object manipulation.
 ## Supported versions
 
 | Odoo version | Branch | Status |
-|---|---|---|
-| Odoo 18 | `18.0` | In development |
+|---|---|--|
+| Odoo 18 | `18.0` | Stable |
 
-This repository currently contains the Odoo 19 edition.
+This branch contains the Odoo 18 edition.
 
 The legacy Odoo 16 edition is maintained separately in its original repository
 under the technical module name `odoo_v16_whiteboard`.
@@ -56,7 +56,7 @@ Whiteboard includes backend validation and access protections for:
 
 ## Technical overview
 
-- Odoo version: 19.0
+- Odoo version: 18.0
 - Technical module name: `odoo_whiteboard`
 - Visible application name: `Whiteboard`
 - Frontend framework: OWL
@@ -88,7 +88,7 @@ On Windows PowerShell:
 
 ```powershell
 python .\odoo-bin `
-  -c ".\odoo19.conf" `
+  -c ".\odoo18.conf" `
   -d YOUR_DATABASE `
   -i odoo_whiteboard `
   --stop-after-init
@@ -96,7 +96,7 @@ python .\odoo-bin `
 
 ## Testing
 
-The Odoo 19 backend regression suite currently contains 64 tests.
+The Odoo 18 backend regression suite contains 64 tests.
 
 Verified result:
 
@@ -121,7 +121,7 @@ Windows PowerShell:
 
 ```powershell
 python .\odoo-bin `
-  -c ".\odoo19.conf" `
+  -c ".\odoo18.conf" `
   -d YOUR_TEST_DATABASE `
   -u odoo_whiteboard `
   --test-tags="/odoo_whiteboard" `
@@ -129,7 +129,7 @@ python .\odoo-bin `
   --log-level=test
 ```
 
-The frontend was also manually regression-tested on Odoo 19, including:
+The frontend was also manually regression-tested on Odoo 18, including:
 
 - Board creation, loading, renaming, switching, and deletion
 - Drawing and object tools
