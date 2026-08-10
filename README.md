@@ -8,13 +8,12 @@ Fabric.js library for canvas rendering and object manipulation.
 ## Supported versions
 
 | Odoo version | Branch | Status |
-|---|---|--|
-| Odoo 18 | `18.0` | Stable |
+| ------------ | ------ | ------ |
+| Odoo 17      | `17.0` | Stable |
 
-This branch contains the Odoo 18 edition.
+This branch contains the Odoo 17 edition.
 
-The legacy Odoo 16 edition is maintained separately in its original repository
-under the technical module name `odoo_v16_whiteboard`.
+The legacy Odoo 16 edition is maintained separately in its original repository.
 
 ## Features
 
@@ -44,7 +43,7 @@ Whiteboard includes backend validation and access protections for:
 - Per-user board ownership
 - Multi-company isolation
 - Strict board identifier validation
-- Board-name normalization and length limits
+- Board-name normalization, length limits, and duplicate-name protection
 - Maximum board quotas
 - Maximum canvas object counts
 - Maximum JSON payload sizes
@@ -56,7 +55,7 @@ Whiteboard includes backend validation and access protections for:
 
 ## Technical overview
 
-- Odoo version: 18.0
+- Odoo version: 17.0
 - Technical module name: `odoo_whiteboard`
 - Visible application name: `Whiteboard`
 - Frontend framework: OWL
@@ -88,7 +87,7 @@ On Windows PowerShell:
 
 ```powershell
 python .\odoo-bin `
-  -c ".\odoo18.conf" `
+  -c ".\odoo17.conf" `
   -d YOUR_DATABASE `
   -i odoo_whiteboard `
   --stop-after-init
@@ -96,7 +95,7 @@ python .\odoo-bin `
 
 ## Testing
 
-The Odoo 18 backend regression suite contains 64 tests.
+The Odoo 17 backend regression suite contains 64 tests.
 
 Verified result:
 
@@ -121,7 +120,7 @@ Windows PowerShell:
 
 ```powershell
 python .\odoo-bin `
-  -c ".\odoo18.conf" `
+  -c ".\odoo17.conf" `
   -d YOUR_TEST_DATABASE `
   -u odoo_whiteboard `
   --test-tags="/odoo_whiteboard" `
@@ -129,7 +128,7 @@ python .\odoo-bin `
   --log-level=test
 ```
 
-The frontend was also manually regression-tested on Odoo 18, including:
+The frontend was also manually regression-tested on Odoo 17, including:
 
 - Board creation, loading, renaming, switching, and deletion
 - Drawing and object tools
