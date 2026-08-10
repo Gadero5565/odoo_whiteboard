@@ -1,13 +1,13 @@
 {
     "name": "Whiteboard",
-    "version": "18.0.1.0.0",
+    "version": "17.0.1.0.0",
     "category": "Tools",
     "summary": (
         "Secure multi-board whiteboard for drawing, "
         "diagrams, mind maps, and workflows"
     ),
     "description": """
-Whiteboard for Odoo 19
+Whiteboard for Odoo 17
 ======================
 
 A secure and responsive multi-board whiteboard built as an
