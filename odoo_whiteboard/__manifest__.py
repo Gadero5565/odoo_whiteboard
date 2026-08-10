@@ -1,22 +1,28 @@
 {
     "name": "Whiteboard",
-    "version": "18.0.1.0.0",
+    "version": "18.0.1.0.1",
     "category": "Tools",
     "summary": (
         "Secure multi-board whiteboard for drawing, "
         "diagrams, mind maps, and workflows"
     ),
     "description": """
-Whiteboard for Odoo 19
-======================
+    Whiteboard for Odoo
+    ===================
 
-A secure and responsive multi-board whiteboard built as an
-OWL client action and powered by a locally bundled Fabric.js build.
+    A secure and responsive multi-board whiteboard built as an
+    OWL client action and powered by a locally bundled Fabric.js build.
 
-It provides freehand drawing, text, shapes, connectors, mind maps,
-flowcharts, templates, autosave, undo and redo, PNG export, responsive
-layouts, RTL support, and optimistic concurrency protection.
-""",
+    Create freehand drawings, text, shapes, connectors, mind maps,
+    flowcharts, and reusable templates directly inside Odoo.
+
+    Includes autosave, manual save, undo and redo, PNG export,
+    responsive layouts, RTL support, optimistic concurrency protection,
+    board-data validation, and duplicate board-name protection.
+
+    This package is built for Odoo 18.
+    Whiteboard is also maintained for Odoo 17 and Odoo 19.
+    """,
     "author": "Gadeer Mahmoud",
     "license": "LGPL-3",
     "images": [

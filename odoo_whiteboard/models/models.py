@@ -261,6 +261,33 @@ class WhiteboardBoard(models.Model):
         return super().write(vals)
 
     # -------------------------------------------------------------------------
+    # Constrains
+    # -------------------------------------------------------------------------
+
+    @api.constrains("name", "user_id", "company_id", "active")
+    def _check_unique_board_name(self):
+        for board in self:
+            if not board.active or not board.name:
+                continue
+
+            normalized_name = board.name.strip().lower()
+
+            duplicates = self.search([
+                ("id", "!=", board.id),
+                ("user_id", "=", board.user_id.id),
+                ("company_id", "=", board.company_id.id),
+                ("active", "=", True),
+            ])
+
+            if any(
+                    (other.name or "").strip().lower() == normalized_name
+                    for other in duplicates
+            ):
+                raise ValidationError(
+                    _("You already have a board with this name.")
+                )
+
+    # -------------------------------------------------------------------------
     # Helpers
     # -------------------------------------------------------------------------
 

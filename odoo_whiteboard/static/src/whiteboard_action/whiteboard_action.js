@@ -2639,8 +2639,33 @@ export class WhiteboardAction extends Component {
             }
 
             return true;
-        } catch {
+        } catch (error) {
             saveFailed = true;
+
+            const isValidationError = (
+                error?.exceptionName
+                === "odoo.exceptions.ValidationError"
+            );
+
+            if (isValidationError) {
+                this._autosaveBlockedReason = "validation";
+
+                const validationMessage = (
+                    error?.data?.message
+                    || "The whiteboard could not be saved because some values are invalid."
+                );
+
+                this.notification.add(
+                    validationMessage,
+                    {
+                        type: "danger",
+                    }
+                );
+
+                this._autosaveFailureNotified = true;
+                return false;
+            }
+
             nextAutosaveDelay = AUTOSAVE_RETRY_MS;
 
             if (
