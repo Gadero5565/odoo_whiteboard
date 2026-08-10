@@ -13,8 +13,7 @@ Fabric.js library for canvas rendering and object manipulation.
 
 This branch contains the Odoo 18 edition.
 
-The legacy Odoo 16 edition is maintained separately in its original repository
-under the technical module name `odoo_v16_whiteboard`.
+   The legacy Odoo 16 edition is maintained separately in its original repository.
 
 ## Features
 
@@ -44,7 +43,7 @@ Whiteboard includes backend validation and access protections for:
 - Per-user board ownership
 - Multi-company isolation
 - Strict board identifier validation
-- Board-name normalization and length limits
+- Board-name normalization, length limits, and duplicate-name protection
 - Maximum board quotas
 - Maximum canvas object counts
 - Maximum JSON payload sizes
