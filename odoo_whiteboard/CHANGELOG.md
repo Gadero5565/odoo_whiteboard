@@ -7,6 +7,18 @@ The version format follows the Odoo module convention:
 ```text
 ODOO_MAJOR.MODULE_MAJOR.MODULE_MINOR.PATCH
 ```
+## [19.0.1.0.1] - 2026-08-10
+
+### Fixed
+
+- Prevented duplicate active board names for the same user and company.
+- Improved OWL handling of backend validation errors.
+- Prevented repeated autosave retries for validation failures until the invalid value is corrected.
+
+### Changed
+
+- Updated the Odoo Apps presentation for multi-version availability.
+- Updated the application cover to represent Odoo 17, 18, and 19.
 
 ## [19.0.1.0.0] - 2026-07-31
 

@@ -44,7 +44,7 @@ Whiteboard includes backend validation and access protections for:
 - Per-user board ownership
 - Multi-company isolation
 - Strict board identifier validation
-- Board-name normalization and length limits
+- Board-name normalization, length limits, and duplicate-name protection
 - Maximum board quotas
 - Maximum canvas object counts
 - Maximum JSON payload sizes
