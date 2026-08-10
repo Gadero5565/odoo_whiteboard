@@ -3,7 +3,7 @@
 import { Component, onMounted, onWillStart, onWillUnmount, useRef, useState } from "@odoo/owl";
 import { registry } from "@web/core/registry";
 import { useService } from "@web/core/utils/hooks";
-import { useSetupAction } from "@web/search/action_hook";
+import { useSetupAction } from "@web/webclient/actions/action_hook";
 
 import {
     WHITEBOARD_OBJECT_PROPS,
@@ -2639,8 +2639,41 @@ export class WhiteboardAction extends Component {
             }
 
             return true;
-        } catch {
+        } catch (error) {
             saveFailed = true;
+
+            const isValidationError = (
+                error?.exceptionName
+                === "odoo.exceptions.ValidationError"
+            );
+
+            if (isValidationError) {
+                /*
+                 * Validation errors are permanent until the user changes
+                 * the invalid value. Do not keep retrying the same save.
+                 */
+                this._autosaveBlockedReason = "validation";
+
+                const validationMessage = (
+                    error?.data?.message
+                    || "The whiteboard could not be saved because some values are invalid."
+                );
+
+                this.notification.add(
+                    validationMessage,
+                    {
+                        type: "danger",
+                    }
+                );
+
+                this._autosaveFailureNotified = true;
+                return false;
+            }
+
+            /*
+             * Unexpected/transient failures may succeed later,
+             * so keep the existing automatic retry behavior.
+             */
             nextAutosaveDelay = AUTOSAVE_RETRY_MS;
 
             if (
