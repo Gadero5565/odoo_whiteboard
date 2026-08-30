@@ -138,7 +138,9 @@ class WhiteboardBoard(models.Model):
         Do not trust user_id coming from the client, XML context, RPC, import, etc.
         Each user creates boards only for himself.
         """
-        self._check_board_creation_quota(len(vals_list))
+        self._check_board_creation_quota(
+            self._get_personal_quota_creation_count(vals_list)
+        )
         prepared_vals_list = []
 
         for vals in vals_list:
@@ -272,12 +274,9 @@ class WhiteboardBoard(models.Model):
 
             normalized_name = board.name.strip().lower()
 
-            duplicates = self.search([
-                ("id", "!=", board.id),
-                ("user_id", "=", board.user_id.id),
-                ("company_id", "=", board.company_id.id),
-                ("active", "=", True),
-            ])
+            duplicates = self.search(
+                self._board_name_scope_domain(board)
+            )
 
             if any(
                     (other.name or "").strip().lower() == normalized_name
@@ -426,32 +425,40 @@ class WhiteboardBoard(models.Model):
         return normalized_id
 
     def _get_current_user_board(self, board_id):
-        normalized_board_id = (
-            self._normalize_board_id(
-                board_id
-            )
-        )
+        """
+        Return an active personal board owned by the current user.
+
+        This helper intentionally remains personal-board specific.
+        """
+        normalized_board_id = self._normalize_board_id(board_id)
 
         if not normalized_board_id:
             return self.browse()
 
         return self.search(
             [
-                (
-                    "id",
-                    "=",
-                    normalized_board_id,
-                ),
-                (
-                    "user_id",
-                    "=",
-                    self.env.uid,
-                ),
-                (
-                    "active",
-                    "=",
-                    True,
-                ),
+                ("id", "=", normalized_board_id),
+                *self._personal_board_domain(),
+            ],
+            limit=1,
+        )
+
+    def _get_accessible_board(self, board_id, access_mode="read"):
+        """
+        Return an active board accessible for the requested operation.
+
+        The default implementation has the same owner-only behavior as
+        personal Whiteboards. Companion addons may extend the access domain.
+        """
+        normalized_board_id = self._normalize_board_id(board_id)
+
+        if not normalized_board_id:
+            return self.browse()
+
+        return self.search(
+            [
+                ("id", "=", normalized_board_id),
+                *self._board_access_domain(access_mode=access_mode),
             ],
             limit=1,
         )
@@ -1079,6 +1086,57 @@ class WhiteboardBoard(models.Model):
             decoded
         )
 
+    @api.model
+    def _personal_board_domain(self):
+        """
+        Domain used by the standalone Whiteboard application.
+
+        Companion addons may provide other kinds of boards without making
+        them appear in the user's personal Whiteboard selector.
+        """
+        return [
+            ("user_id", "=", self.env.uid),
+            ("active", "=", True),
+        ]
+
+    @api.model
+    def _board_access_domain(self, access_mode="read"):
+        """
+        Domain used when opening or saving a specific board.
+
+        Companion addons may extend this domain to provide additional board
+        access while keeping personal-board behavior unchanged.
+        """
+        if access_mode not in {"read", "write"}:
+            raise ValueError("Unsupported whiteboard access mode.")
+
+        return self._personal_board_domain()
+
+    @api.model
+    def _get_personal_quota_creation_count(self, vals_list):
+        """
+        Return how many records in this create operation count toward the
+        current user's personal whiteboard quota.
+
+        By default every board is personal.
+        """
+        return len(vals_list)
+
+    def _board_name_scope_domain(self, board):
+        """
+        Return the scope in which a board name must be unique.
+
+        By default names are unique per user and company.
+        """
+        board.ensure_one()
+
+        return [
+            ("id", "!=", board.id),
+            ("user_id", "=", board.user_id.id),
+            ("company_id", "=", board.company_id.id),
+            ("active", "=", True),
+        ]
+
     # -------------------------------------------------------------------------
     # RPC API used by OWL action
     # -------------------------------------------------------------------------
@@ -1115,10 +1173,7 @@ class WhiteboardBoard(models.Model):
             )
         )
 
-        domain = [
-            ("user_id", "=", self.env.uid),
-            ("active", "=", True),
-        ]
+        domain = self._personal_board_domain()
 
         # Fetch one additional record so has_more can be determined
         # without issuing a separate search_count query.
@@ -1209,10 +1264,7 @@ class WhiteboardBoard(models.Model):
         - otherwise create the first board
         """
         board = self.search(
-            [
-                ("user_id", "=", self.env.uid),
-                ("active", "=", True),
-            ],
+            self._personal_board_domain(),
             limit=1,
             order="write_date desc, id desc",
         )
@@ -1235,9 +1287,12 @@ class WhiteboardBoard(models.Model):
     @api.model
     def get_board_data(self, board_id):
         """
-        Return data for a specific board only if owned by current user.
+        Return data for a specific board when the current user has read access.
         """
-        board = self._get_current_user_board(board_id)
+        board = self._get_accessible_board(
+            board_id,
+            access_mode="read",
+        )
 
         if not board:
             return {"error": _("Board not found or access denied.")}
@@ -1254,13 +1309,16 @@ class WhiteboardBoard(models.Model):
             expected_revision=None,
     ):
         """
-        Save a board owned by the current user using optimistic
+        Save a board writable by the current user using optimistic
         concurrency protection.
 
         The save is rejected when the client revision is older than the
         revision currently stored in the database.
         """
-        board = self._get_current_user_board(board_id)
+        board = self._get_accessible_board(
+            board_id,
+            access_mode="write",
+        )
 
         if not board:
             return {
@@ -1318,14 +1376,13 @@ class WhiteboardBoard(models.Model):
         board.flush_recordset([
             "revision",
             "active",
-            "user_id",
         ])
 
         # Lock the database row so two concurrent saves cannot both
         # validate the same revision and then overwrite one another.
         self.env.cr.execute(
             """
-                SELECT revision, active, user_id
+                SELECT revision, active
                   FROM whiteboard_board
                  WHERE id = %s
                  FOR UPDATE
@@ -1341,13 +1398,17 @@ class WhiteboardBoard(models.Model):
                 ),
             }
 
-        current_revision, is_active, owner_id = row
+        current_revision, is_active = row
         current_revision = current_revision or 0
 
-        # Recheck security-sensitive values after acquiring the lock.
+        # Recheck access after acquiring the row lock so an extension cannot
+        # bypass the same write-access policy used before validation.
         if (
                 not is_active
-                or owner_id != self.env.uid
+                or not self._get_accessible_board(
+            board.id,
+            access_mode="write",
+        )
         ):
             return {
                 "error": _(
