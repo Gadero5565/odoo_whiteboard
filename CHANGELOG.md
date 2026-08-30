@@ -7,6 +7,15 @@ The version format follows the Odoo module convention:
 ```text
 ODOO_MAJOR.MODULE_MAJOR.MODULE_MINOR.PATCH
 ```
+
+## [19.0.1.0.2] - 2026-08-30
+
+- Added extensibility hooks for companion addons.
+- Added separate read/write board access domains for safe integrations.
+- Added overridable personal-board quota and board-name scope hooks.
+- Preserved existing personal board ownership and security behavior.
+- Moved access-control tests to post-install execution for compatibility with fully loaded Odoo environments.
+
 ## [19.0.1.0.1] - 2026-08-10
 
 ### Fixed
