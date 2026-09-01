@@ -1,6 +1,6 @@
 {
     "name": "Whiteboard",
-    "version": "19.0.1.0.2",
+    "version": "19.0.1.0.3",
     "category": "Tools",
     "summary": (
         "Secure multi-board whiteboard for drawing, "

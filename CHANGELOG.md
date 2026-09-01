@@ -8,6 +8,12 @@ The version format follows the Odoo module convention:
 ODOO_MAJOR.MODULE_MAJOR.MODULE_MINOR.PATCH
 ```
 
+## [19.0.1.0.3] - 2026-09-01
+
+- Added an overridable server-side board creation metadata hook for companion addons.
+- Preserved the standalone Whiteboard ownership, company, and revision behavior.
+- Allows companion addons to define shared board ownership safely without post-create rewrites.
+
 ## [19.0.1.0.2] - 2026-08-30
 
 - Added extensibility hooks for companion addons.
