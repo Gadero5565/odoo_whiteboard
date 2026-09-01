@@ -37,11 +37,12 @@ under the technical module name `odoo_v16_whiteboard`.
 - RTL layout support
 - User and company data isolation
 
-Extensibility
--------------
+## Extensibility
+
 Whiteboard exposes overridable hooks for companion addons to extend board
-access, naming scopes, and quota behavior while preserving the standalone
-module's personal-board security model.
+access, naming scopes, quota behavior, and server-controlled creation
+metadata while preserving the standalone module's personal-board security
+model.
 
 ## Security and data integrity
 

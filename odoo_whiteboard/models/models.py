@@ -130,6 +130,21 @@ class WhiteboardBoard(models.Model):
     # Ownership hardening
     # -------------------------------------------------------------------------
 
+    @api.model
+    def _board_server_create_values(self, vals):
+        """
+        Return server-controlled metadata used when a board is created.
+
+        Companion addons may override this for another board scope while
+        keeping ownership, company, and revision values controlled by the
+        server rather than by client input.
+        """
+        return {
+            "user_id": self.env.uid,
+            "company_id": self.env.company.id,
+            "revision": 0,
+        }
+
     @api.model_create_multi
     def create(self, vals_list):
         """
@@ -148,9 +163,9 @@ class WhiteboardBoard(models.Model):
 
             # Ownership, company, and concurrency metadata are always
             # controlled by the server, never by RPC or imported values.
-            vals["user_id"] = self.env.uid
-            vals["company_id"] = self.env.company.id
-            vals["revision"] = 0
+            vals.update(
+                self._board_server_create_values(vals)
+            )
 
             if "name" in vals:
                 vals["name"] = self._validated_board_name(
